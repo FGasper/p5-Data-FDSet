@@ -1,0 +1,5 @@
+.gitignore
+Changes
+LICENSE
+lib/Data/FDSet.pm
+t/all.t
