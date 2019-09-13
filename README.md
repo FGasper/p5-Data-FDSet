@@ -1,6 +1,6 @@
 # NAME
 
-Data::FDSet
+Data::FDSet - Syntactic sugar for [select()](https://metacpan.org/pod/perlfunc#select) masks
 
 # SYNOPSIS
 
