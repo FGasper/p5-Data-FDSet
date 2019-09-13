@@ -3,6 +3,11 @@ package Data::FDSet;
 use strict;
 use warnings;
 
+our $VERSION;
+BEGIN {
+    $VERSION = 0.01;
+}
+
 =encoding utf-8
 
 =head1 NAME

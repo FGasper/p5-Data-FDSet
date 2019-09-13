@@ -43,4 +43,12 @@ is_deeply(
     'select() works with the dereferenced scalar',
 );
 
+#----------------------------------------------------------------------
+
+vec( my $mask = q<>, 5, 1 ) = 1;
+ok(
+    Data::FDSet->new($mask)->has(5),
+    'instantiate from preexisting mask; has()',
+);
+
 done_testing();
