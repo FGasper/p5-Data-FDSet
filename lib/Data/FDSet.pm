@@ -5,14 +5,14 @@ use warnings;
 
 our $VERSION;
 BEGIN {
-    $VERSION = 0.01;
+    $VERSION = '0.01_TRIAL1';
 }
 
 =encoding utf-8
 
 =head1 NAME
 
-Data::FDSet
+Data::FDSet - Syntactic sugar for L<select()|perlfunc/select> masks
 
 =head1 SYNOPSIS
 
