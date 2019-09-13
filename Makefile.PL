@@ -8,7 +8,6 @@ WriteMakefile(
     LICENSE        => 'perl',
 
     PREREQ_PM => {
-        'Call::Context' => 0,
     },
 
     TEST_REQUIRES => {
