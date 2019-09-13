@@ -8,7 +8,7 @@ use Test::FailWarnings;
 
 use File::Temp ();
 
-use_ok('Data::FDset');
+use_ok('Data::FDSet');
 
 my $set = Data::FDSet->new();
 is_deeply( $set->get_fds(), [], 'empty' );
