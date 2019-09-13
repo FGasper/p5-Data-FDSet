@@ -11,7 +11,7 @@ use File::Temp ();
 use_ok('Data::FDSet');
 
 my $set = Data::FDSet->new();
-is_deeply( $set->get_fds(), [], 'empty' );
+is_deeply( $set->get_fds(), [], 'get_fds() when empty' );
 
 my @temps = map { scalar File::Temp::tempfile() } ( 1 .. 8 );
 
@@ -49,6 +49,20 @@ vec( my $mask = q<>, 5, 1 ) = 1;
 ok(
     Data::FDSet->new($mask)->has(5),
     'instantiate from preexisting mask; has()',
+);
+
+#----------------------------------------------------------------------
+
+vec( my $mask2 = q<>, 2, 1 ) = 1;
+vec( $mask2, 7, 1 ) = 1;
+
+my $replace_set = Data::FDSet->new();
+$$replace_set = $mask2;
+
+is_deeply(
+    $replace_set->get_fds(),
+    [ 2, 7 ],
+    'replace by writing internal scalar',
 );
 
 done_testing();

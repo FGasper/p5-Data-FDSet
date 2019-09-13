@@ -5,7 +5,7 @@ use warnings;
 
 our $VERSION;
 BEGIN {
-    $VERSION = '0.01_TRIAL1';
+    $VERSION = '0.01';
 }
 
 =encoding utf-8
@@ -32,7 +32,10 @@ Object-oriented syntax:
         my $fds_to_read_ar = $rout->get_fds();
     }
 
-You can also do:
+Or, if you’d rather avoid object-oriented syntax:
+
+    my $rout = q<>;
+    Data::FDSet::add(\$rout, $some_filehandle, fileno($other_fh))
 
     my $fds_to_read_ar = Data::FDSet::get_fds(\$rout);
 
@@ -46,6 +49,17 @@ the functions that C provides to handle C<struct fd_set>.
 =cut
 
 #----------------------------------------------------------------------
+
+=head1 INTERFACE NOTE
+
+A Data::FDSet object is a blessed scalar reference to a bitmask.
+Unlike with most Perl objects, you may safely reference the object
+internals, e.g., by doing
+
+    $$rout_obj = $rin;
+
+… to replace the bitmask contents. (For this reason, this class defines
+no method to do the above.)
 
 =head1 METHODS
 
@@ -67,6 +81,8 @@ sub new {
 =head2 $obj = I<OBJ>->evacuate()
 
 Empty out the object. Analogous to L<FD_ZERO(2)>.
+
+Returns I<OBJ>.
 
 =cut
 
